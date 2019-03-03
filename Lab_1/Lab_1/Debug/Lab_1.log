@@ -1,0 +1,4 @@
+﻿  PipelineProcessor.cpp
+d:\univ\mrzvis\lab_1\lab_1\pipelineprocessor.cpp(71): warning C4244: +=: преобразование "double" в "size_t", возможна потеря данных
+d:\univ\mrzvis\lab_1\lab_1\pipelineprocessor.cpp(173): warning C4244: +=: преобразование "double" в "size_t", возможна потеря данных
+  Lab_1.vcxproj -> D:\Univ\MRZvIS\Lab_1\Debug\Lab_1.exe
