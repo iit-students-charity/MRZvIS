@@ -4,37 +4,27 @@
 
 Pipeline::Pipeline(const size_t& number_degree)
 {
-	steps = 1;
 	Pipeline::number_degree = number_degree;
-	partial_summ.resize(number_degree * 2);
-	for (size_t curr_degree = 0; curr_degree < number_degree * 2; curr_degree++)
-	{
-		partial_summ[curr_degree] = false;
-	}
 }
 
-std::vector <bool> Pipeline::getPartialSumm()
-{
-	return partial_summ;
-}
 
-std::vector <bool> Pipeline::shift(const std::vector<bool>& first_number, const bool& digit)
+std::vector <bool> Pipeline::shift(const std::vector<bool>& first_number, const bool& digit, const size_t& shift_lenth)
 {
 	std::vector <bool> res(0);
 	if (digit)
 	{
 		//front zeros
-		for (size_t curr_degree = 0; curr_degree < steps; curr_degree++)
+		for (size_t curr_degree = 0; curr_degree < shift_lenth; curr_degree++)
 		{
 			res.push_back(false);
 		}
 		//digits
-		for (size_t curr_degree = steps; curr_degree < steps + number_degree; curr_degree++)
+		for (size_t curr_degree = shift_lenth; curr_degree < shift_lenth + number_degree; curr_degree++)
 		{
-			res.push_back(first_number[curr_degree - steps]);
+			res.push_back(first_number[curr_degree - shift_lenth]);
 		}
 		//back zeros
-		for (size_t curr_degree = steps+number_degree; curr_degree < number_degree * 2; curr_degree++)
+		for (size_t curr_degree = shift_lenth +number_degree; curr_degree < number_degree * 2; curr_degree++)
 		{
 			res.push_back(false);
 		}
@@ -49,7 +39,7 @@ std::vector <bool> Pipeline::shift(const std::vector<bool>& first_number, const 
 	return res;
 }
 
-std::vector <bool> Pipeline::add(const std::vector<bool>& shifted_number)
+std::vector <bool> Pipeline::add(const std::vector<bool>& shifted_number, std::vector<bool>& partial_summ)
 {
 	std::vector <bool> res;
 	bool trans = false;
@@ -96,11 +86,5 @@ std::vector <bool> Pipeline::add(const std::vector<bool>& shifted_number)
 			trans = true;
 		}
 	}
-	partial_summ = res;
 	return res;
-}
-
-void Pipeline::newStep()
-{
-	steps++;
 }
