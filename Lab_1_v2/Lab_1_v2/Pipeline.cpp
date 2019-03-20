@@ -1,3 +1,14 @@
+/*/////////////////////////////////////////////////////////////////////////////////////
+
+	Laboratory work #1 in "Models of solving problems in intelligent systems"
+	is done by student of BSUIR of grop #721703
+	Antsypovich Pavel Valentinovich
+
+	Pipeline class source code 
+
+	v 2.1.0
+/////////////////////////////////////////////////////////////////////////////////////*/
+
 #include "pch.h"
 #include "Pipeline.h"
 
@@ -10,7 +21,7 @@ Pipeline::Pipeline(const size_t& number_degree)
 
 std::vector <bool> Pipeline::shift(const std::vector<bool>& first_number, const bool& digit, const size_t& shift_lenth)
 {
-	std::vector <bool> res(0);
+	std::vector <bool> res;
 	if (digit)
 	{
 		//front zeros
@@ -24,7 +35,7 @@ std::vector <bool> Pipeline::shift(const std::vector<bool>& first_number, const 
 			res.push_back(first_number[curr_degree - shift_lenth]);
 		}
 		//back zeros
-		for (size_t curr_degree = shift_lenth +number_degree; curr_degree < number_degree * 2; curr_degree++)
+		for (size_t curr_degree = shift_lenth + number_degree; curr_degree < number_degree * 2; curr_degree++)
 		{
 			res.push_back(false);
 		}
@@ -39,7 +50,7 @@ std::vector <bool> Pipeline::shift(const std::vector<bool>& first_number, const 
 	return res;
 }
 
-std::vector <bool> Pipeline::add(const std::vector<bool>& shifted_number, std::vector<bool>& partial_summ)
+std::vector <bool> Pipeline::add(const std::vector<bool>& shifted_number, const std::vector<bool>& partial_summ)
 {
 	std::vector <bool> res;
 	bool trans = false;
