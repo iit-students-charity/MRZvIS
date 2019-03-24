@@ -34,8 +34,8 @@ BinaryPair::BinaryPair(std::vector <bool> first, std::vector <bool> second)
 	for (size_t curr_degree = 0; curr_degree < 8; curr_degree++)
 	{
 		partial_summa.push_back(0);
-		shifted.push_back(0);
 	}
+	shifted = { NULL };
 }
 
 BinaryPair::BinaryPair()
